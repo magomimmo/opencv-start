@@ -7,7 +7,7 @@
   :source-paths ["src/clj"]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [opencv/opencv "2.4.7"]
-                 [opencv/opencv-native "2/4/7"]
+                 [opencv/opencv-native "2.4.7"]
                  [seesaw "1.4.4"]
                  [me.raynes/fs "1.4.4"]]
   :injections [(clojure.lang.RT/loadLibrary org.opencv.core.Core/NATIVE_LIBRARY_NAME)])
