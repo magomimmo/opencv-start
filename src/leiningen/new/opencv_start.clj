@@ -4,6 +4,7 @@
                                              name-to-path
                                              sanitize-ns
                                              multi-segment
+                                             project-name
                                              ->files]]
             [leiningen.core.main :as main]))
 
