@@ -15,10 +15,10 @@ official [opencv.org][2] web site.
 ### Quick start
 
 The following is a very quick start guide to install **OpenCV 2.4.7 or
-higher** which includes Java bindings. It assumes you already
+higher** which includes Java bindings. It assumes that you already
 installed the requirements to build OpenCV lib from the source.
 
-#### Install OpenCV 2.4
+#### Install OpenCV 2.4 with java bindings
 
 I assume you're going to install opencv in the `~/dev` directory.
 
@@ -49,7 +49,7 @@ If it does not exist yet, create the `.lein` directory in your home
 directory.
 
 ```bash
-mkdir ~/.lein
+mkdir -p ~/.lein
 ```
 
 Create a new file named `profiles.clj` in the `~/.lein` directory with
@@ -76,8 +76,8 @@ cd ~/dev/clj-opencv
 cp ~/dev/opencv/build/bin/opencv-247.jar .
 ```
 
-Now, to be able to add the shared native lib to the local maven
-repository, we first need to package it as a jar file.
+To be able to add the shared native lib to the local maven repository,
+we first need to package it as a jar file.
 
 The native lib has to be copied into a directories layout which mimics
 the names of your operating system and architecture. I’m using a Mac
@@ -85,14 +85,21 @@ OS X with a X86 64 bit architecture. So my layout will be the
 following:
 
 ```bash
+# for Mac OS X
 mkdir -p native/macosx/x86_64
+# for GNU/Linux
+# mkdir -p native/linux/x86_64 
 ```
 
-Copy into it the shared native lib for your OS
-(e.g. `libopencv_java247.dylib` for Mac OS X)
+Copy into it the shared native lib for your OS (e.g.
+`libopencv_java247.dylib` for Mac OS X, `libopencv_java247.so` for
+GNU/Linux)
 
 ```bash
+# for Mac OS X
 cp ~/dev/opencv/build/lib/libopencv_java247.dylib native/macosx/x86_64/
+# for GNU/Linux
+# cp ~/dev/opencv/build/lib/libopencv_java247.so native/linux/x86_64/
 ```
 
 If you’re running OpenCV from a different OS/Architecture pair, here
@@ -153,8 +160,19 @@ To create a new OpenCV project issue the following `lein` command
 (task in leiningen parlance):
 
 ```bash
-lein new opencv-start com.sinapsi/first-project
+lein new opencv-start com.sinapsi/first-project --snapshot
 ```
+
+> NOTE 1: the `opencv-start` lein template has still to be published on
+> clojars. At the moment the only way to use it is by `git clone`,
+> locally install and use its snaphost release.
+> 
+> ```bash
+> cd ~/dev
+> git clone https://github.com/magomimmo/opencv-start.git
+> cd opencv-start
+> lein install
+> ```
 
 ## License
 
