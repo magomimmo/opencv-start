@@ -1,11 +1,11 @@
 # opencv-start
 
-A Leiningen template for creating OpenCV project.
+A Leiningen template for creating OpenCV project and REPLing with them
 
 ## Prerequisites
 
-The `opencv-start` lein template requires you already installed into
-your local maven repository both the `opencv/opencv "2.4.7"` and
+The `opencv-start` lein template requires you have already installed
+into your local maven repository both the `opencv/opencv "2.4.7"` and
 `opencv/opencv-native "2.4.7"` artifacts.
 
 To satisfy these requirements follow the
@@ -15,8 +15,8 @@ official [opencv.org][2] web site.
 ### Quick start
 
 The following is a very quick start guide to install **OpenCV 2.4.7 or
-higher** which includes Java bindings. It assumes you already
-installed the requirements to build OpenCV lib from the source.
+higher** with Java bindings and assumes you have already installed the
+requirements to build OpenCV lib from the source.
 
 #### Install OpenCV 2.4
 
@@ -61,8 +61,8 @@ the following content:
 
 #### Install opencv libs as local maven repository artifacts
 
-Note that this step has to be done one time only for each machine you
-want to run an OpenCV project in Clojure.
+Note that this step has to be done once only for each machine you want
+to run an OpenCV project in Clojure.
 
 ##### Preparation
 
@@ -76,8 +76,8 @@ cd ~/dev/clj-opencv
 cp ~/dev/opencv/build/bin/opencv-247.jar .
 ```
 
-Now, to be able to add the shared native lib to the local maven
-repository, we first need to package it as a jar file.
+To be able to add the shared native lib to the local maven repository,
+we first need to package it as a jar file.
 
 The native lib has to be copied into a directories layout which mimics
 the names of your operating system and architecture. I’m using a Mac
@@ -123,7 +123,7 @@ command.
 jar -cMf opencv-native-247.jar native
 ```
 
-##### Install into the local maven repository
+##### Install opencv artifacts into the local maven repository
 
 First install the `opencv-247.jar` in the local maven repository.
 
@@ -149,11 +149,34 @@ Clojure projects interoperating with the `opencv` lib.
 
 ## Usage
 
+### Create a new project
+
 To create a new OpenCV project issue the following `lein` command
 (task in leiningen parlance):
 
 ```bash
 lein new opencv-start com.sinapsi/first-project
+```
+
+### REPLing with the project
+
+To start REPLing with your newly create project, just run the
+following `lein` task from the main directory of the project:
+
+```clojure
+cd first-project
+Giacomos-MacBook-Pro:opencv-repl mimmo$ lein repl
+nREPL server started on port 50090 on host 127.0.0.1
+REPL-y 0.3.0
+Clojure 1.5.1
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=>
 ```
 
 ## License
