@@ -18,7 +18,7 @@ The following is a very quick start guide to install **OpenCV 2.4.7 or
 higher** with Java bindings and assumes you have already installed the
 requirements to build OpenCV lib from the source.
 
-#### Install OpenCV 2.4
+#### Install OpenCV 2.4 with java bindings
 
 I assume you're going to install opencv in the `~/dev` directory.
 
@@ -49,7 +49,7 @@ If it does not exist yet, create the `.lein` directory in your home
 directory.
 
 ```bash
-mkdir ~/.lein
+mkdir -p ~/.lein
 ```
 
 Create a new file named `profiles.clj` in the `~/.lein` directory with
@@ -85,14 +85,21 @@ OS X with a X86 64 bit architecture. So my layout will be the
 following:
 
 ```bash
+# for Mac OS X
 mkdir -p native/macosx/x86_64
+# for GNU/Linux
+# mkdir -p native/linux/x86_64 
 ```
 
-Copy into it the shared native lib for your OS
-(e.g. `libopencv_java247.dylib` for Mac OS X)
+Copy into it the shared native lib for your OS (e.g.
+`libopencv_java247.dylib` for Mac OS X, `libopencv_java247.so` for
+GNU/Linux)
 
 ```bash
+# for Mac OS X
 cp ~/dev/opencv/build/lib/libopencv_java247.dylib native/macosx/x86_64/
+# for GNU/Linux
+# cp ~/dev/opencv/build/lib/libopencv_java247.so native/linux/x86_64/
 ```
 
 If you’re running OpenCV from a different OS/Architecture pair, here
